@@ -1,8 +1,11 @@
 # Compose UI Lab
 
-A showcase of custom Jetpack Compose components, built from scratch — no Material
-components underneath. Each one is driven by a small design-token system, so the whole
-library moves and looks consistent.
+A growing collection of custom Jetpack Compose components — built from scratch, with no
+Material components underneath. Every component is driven by a small design-token system
+(color, type, spacing, motion), so the whole library moves with one consistent personality.
+
+Built by a senior mobile engineer (8 years, fintech background) who cares about the small
+details that make an interface feel premium — spring physics, micro-interactions, haptics.
 
 ![demo](docs/demo.gif)
 <!-- Record the running app (5–10s), export a light GIF, and drop it at docs/demo.gif -->
