@@ -36,6 +36,8 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.selected
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
@@ -62,6 +64,8 @@ fun LabBottomNav(
     onSelect: (String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    if (items.isEmpty()) return // library precondition: render nothing for an empty bar
+
     val colors = LabTheme.colors
     val shapes = LabTheme.shapes
     val haptic = LocalHapticFeedback.current
@@ -157,7 +161,10 @@ private fun NavCell(
                 indication = null,
                 onClick = onClick,
             )
-            .semantics { selected = isSelected },
+            .semantics {
+                selected = isSelected
+                role = Role.Tab
+            },
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
     ) {

@@ -27,6 +27,27 @@ A bottom navigation bar with a morphing, spring-driven indicator.
 and a central `LabMotion`. Components reference roles (e.g. `LabTheme.colors.accent`),
 never raw values — the same approach used in production design systems.
 
+## Component 2 — Canvas Charts
+
+A line chart and a donut chart, both drawn from scratch on `Canvas` — no charting
+library underneath.
+
+**Line chart**
+- Smooth Catmull-Rom curve through the points (no jagged joints)
+- Draws itself in left-to-right whenever the data changes
+- Gradient area fill under the line
+- Touch to scrub: drag across to read any point — a guide line, focus dot and value
+  tooltip follow the finger, with a light haptic tick per step
+
+**Donut chart**
+- Sweeps in clockwise from the top on data change
+- Tap a slice to select it: the slice springs outward, the rest dim back, and the
+  center switches to that slice's share; tap again to deselect
+- Slice colors come from the token palette — callers pass only label + value
+
+Both expose an accessible summary and a live selected-value through semantics, and read
+their colors, motion and type from the same token layer as everything else.
+
 ## Tech
 
 Jetpack Compose · Kotlin 2.0 · Material3 (icons/text only) · AGP 8.5 · minSdk 24
@@ -50,14 +71,15 @@ app/src/main/java/com/uilab/showcase/
 │   ├── token/        (Color, Typography, Spacing, Shapes, Motion)
 │   └── theme/        (LabTheme + CompositionLocals)
 ├── components/
-│   └── bottomnav/    (LabBottomNav — component 1)
-└── catalog/          (host + interactive demo screen)
+│   ├── bottomnav/    (LabBottomNav — component 1)
+│   └── chart/        (LabLineChart, LabDonutChart — component 2)
+└── catalog/          (host + interactive demo screens)
 ```
 
 ## Roadmap
 
 - [x] Animated bottom navigation
-- [ ] Custom Canvas chart (line / donut)
+- [x] Custom Canvas chart (line / donut)
 - [ ] Swipeable card stack
 - [ ] Morphing FAB
 - [ ] Shimmer skeleton loaders
