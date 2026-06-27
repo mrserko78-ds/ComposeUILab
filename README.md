@@ -7,8 +7,7 @@ Material components underneath. Every component is driven by a small design-toke
 Built by a senior mobile engineer (8 years, fintech background) who cares about the small
 details that make an interface feel premium — spring physics, micro-interactions, haptics.
 
-![demo](docs/demo.gif)
-<!-- Record the running app (5–10s), export a light GIF, and drop it at docs/demo.gif -->
+![navbar demo](docs/navbar.gif)
 
 ## Component 1 — Animated Bottom Navigation
 
@@ -31,6 +30,8 @@ never raw values — the same approach used in production design systems.
 
 A line chart and a donut chart, both drawn from scratch on `Canvas` — no charting
 library underneath.
+
+![charts demo](docs/charts.gif)
 
 **Line chart**
 - Smooth Catmull-Rom curve through the points (no jagged joints)
