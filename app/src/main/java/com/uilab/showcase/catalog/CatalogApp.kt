@@ -2,6 +2,7 @@ package com.uilab.showcase.catalog
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -27,6 +29,7 @@ import com.uilab.showcase.designsystem.theme.LabTheme
 private enum class CatalogEntry(val tab: String, val subtitle: String) {
     BottomNav("Bottom Nav", "Animated Bottom Navigation"),
     Charts("Charts", "Canvas Line & Donut"),
+    CardStack("Card Stack", "Swipeable Card Stack"),
 }
 
 /**
@@ -75,7 +78,10 @@ fun CatalogApp(
 
             Spacer(Modifier.height(spacing.l))
 
-            Row(horizontalArrangement = Arrangement.spacedBy(spacing.s)) {
+            Row(
+                modifier = Modifier.horizontalScroll(rememberScrollState()),
+                horizontalArrangement = Arrangement.spacedBy(spacing.s),
+            ) {
                 CatalogEntry.entries.forEach { item ->
                     CatalogChip(
                         label = item.tab,
@@ -91,6 +97,7 @@ fun CatalogApp(
                 when (entry) {
                     CatalogEntry.BottomNav -> BottomNavDemo()
                     CatalogEntry.Charts -> ChartsDemo()
+                    CatalogEntry.CardStack -> CardStackDemo()
                 }
             }
         }
