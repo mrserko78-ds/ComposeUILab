@@ -33,6 +33,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
+import com.uilab.showcase.components.cardstack.CardStackStyle
 import com.uilab.showcase.components.cardstack.LabCardStack
 import com.uilab.showcase.components.cardstack.SwipeDirection
 import com.uilab.showcase.components.cardstack.rememberLabCardStackState
@@ -116,6 +117,9 @@ fun CardStackDemo() {
                 onSwiped = { _, direction -> history.add(direction) },
                 onStackEnd = { finished = true },
                 key = { it.title },
+                // Larger peek than the default: tall demo cards shrink ~11dp per depth
+                // level, so extra offset keeps the stack visibly layered.
+                style = CardStackStyle(peekOffset = 24.dp),
                 modifier = Modifier.fillMaxSize(),
             ) { card -> DeckCardFace(card) }
         }
