@@ -49,6 +49,27 @@ library underneath.
 Both expose an accessible summary and a live selected-value through semantics, and read
 their colors, motion and type from the same token layer as everything else.
 
+## Component 3 — Swipeable Card Stack
+
+A Tinder-style card stack, built from scratch on `pointerInput` + `Animatable` — no
+gesture or physics libraries underneath.
+
+![card stack demo](docs/cardstack.gif)
+
+**What it demonstrates**
+- Real drag physics: release below the threshold and the card springs back with a
+  bounce; past it — or on a fast fling — it flies off along the release velocity vector
+- Rotation follows the grab point: hold the top half and the card tilts one way,
+  the bottom half — the other, like a physical card held off-center
+- Back cards scale up and rise in lockstep with the live drag, not after it
+- Drags toward a disallowed direction rubber-band with resistance
+- Rewind: the last swiped card drops back in on a spring while the stack settles
+  down beneath it
+- Unidirectional flow: `LabCardStackState` walks an immutable list — `topIndex`,
+  live `dragProgress`, `canRewind`, suspend `swipe()` / `rewind()`; `onSwiped`
+  fires only after the fly-out completes, `onStackEnd` once when the deck ends
+- Custom accessibility actions for every allowed swipe direction
+
 ## Tech
 
 Jetpack Compose · Kotlin 2.0 · Material3 (icons/text only) · AGP 8.5 · minSdk 24
@@ -73,6 +94,7 @@ app/src/main/java/com/uilab/showcase/
 │   └── theme/        (LabTheme + CompositionLocals)
 ├── components/
 │   ├── bottomnav/    (LabBottomNav — component 1)
+│   ├── cardstack/    (LabCardStack — component 3)
 │   └── chart/        (LabLineChart, LabDonutChart — component 2)
 └── catalog/          (host + interactive demo screens)
 ```
@@ -81,7 +103,7 @@ app/src/main/java/com/uilab/showcase/
 
 - [x] Animated bottom navigation
 - [x] Custom Canvas chart (line / donut)
-- [ ] Swipeable card stack
+- [x] Swipeable card stack
 - [ ] Morphing FAB
 - [ ] Shimmer skeleton loaders
 
