@@ -30,6 +30,7 @@ private enum class CatalogEntry(val tab: String, val subtitle: String) {
     BottomNav("Bottom Nav", "Animated Bottom Navigation"),
     Charts("Charts", "Canvas Line & Donut"),
     CardStack("Card Stack", "Swipeable Card Stack"),
+    MorphingFab("Morphing FAB", "Container-Transform Action Menu"),
 }
 
 /**
@@ -98,6 +99,7 @@ fun CatalogApp(
                     CatalogEntry.BottomNav -> BottomNavDemo()
                     CatalogEntry.Charts -> ChartsDemo()
                     CatalogEntry.CardStack -> CardStackDemo()
+                    CatalogEntry.MorphingFab -> MorphingFabDemo()
                 }
             }
         }
