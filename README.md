@@ -70,6 +70,25 @@ gesture or physics libraries underneath.
   fires only after the fly-out completes, `onStackEnd` once when the deck ends
 - Custom accessibility actions for every allowed swipe direction
 
+## Component 4 — Morphing FAB
+
+A floating action button that morphs into an action panel — a container transform
+built from scratch, no Material FAB or menu underneath.
+
+![morphing fab demo](docs/morphingfab.gif)
+
+**What it demonstrates**
+- One spring drives everything: the circle grows into a rounded panel while its
+  corners, background and icon tint interpolate in lockstep — nothing lags behind
+- The "+" rotates into a "×" with the spring's slight overshoot and stays anchored
+  in its corner: the panel unfolds *out of* the button
+- Actions reveal in a stagger from the button upward, each fading and rising off the
+  same progress value; collapsing plays the sequence backward
+- Custom press feedback (no ripple) + a haptic tick on toggle
+- Stateless: the caller owns `expanded` and reacts to `onExpandedChange` /
+  `onActionClick`; actions are real buttons only while expanded and leave the
+  semantics tree when collapsed
+
 ## Tech
 
 Jetpack Compose · Kotlin 2.0 · Material3 (icons/text only) · AGP 8.5 · minSdk 24
@@ -95,7 +114,8 @@ app/src/main/java/com/uilab/showcase/
 ├── components/
 │   ├── bottomnav/    (LabBottomNav — component 1)
 │   ├── cardstack/    (LabCardStack — component 3)
-│   └── chart/        (LabLineChart, LabDonutChart — component 2)
+│   ├── chart/        (LabLineChart, LabDonutChart — component 2)
+│   └── fab/          (LabMorphingFab — component 4)
 └── catalog/          (host + interactive demo screens)
 ```
 
@@ -104,7 +124,7 @@ app/src/main/java/com/uilab/showcase/
 - [x] Animated bottom navigation
 - [x] Custom Canvas chart (line / donut)
 - [x] Swipeable card stack
-- [ ] Morphing FAB
+- [x] Morphing FAB
 - [ ] Shimmer skeleton loaders
 
 ## License
