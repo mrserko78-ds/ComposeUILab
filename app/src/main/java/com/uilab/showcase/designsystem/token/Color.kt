@@ -21,6 +21,10 @@ data class LabColors(
     val chartGrid: Color,
     /** Categorical palette for multi-series graphics (donut slices, legends). */
     val chartPalette: List<Color>,
+    /** Resting fill of skeleton placeholders. */
+    val skeleton: Color,
+    /** Peak of the shimmer band that sweeps across skeletons. */
+    val skeletonHighlight: Color,
 )
 
 val LightLabColors = LabColors(
@@ -42,6 +46,8 @@ val LightLabColors = LabColors(
         Color(0xFF4C8DF6), // blue
         Color(0xFF9A6CF0), // violet
     ),
+    skeleton = Color(0xFFE9EAF2),
+    skeletonHighlight = Color(0xFFFFFFFF),
 )
 
 val DarkLabColors = LabColors(
@@ -62,4 +68,6 @@ val DarkLabColors = LabColors(
         Color(0xFF79ABFF), // blue
         Color(0xFFB79BF5), // violet
     ),
+    skeleton = Color(0xFF22222D),
+    skeletonHighlight = Color(0xFF3E3E4E),
 )

@@ -31,6 +31,7 @@ private enum class CatalogEntry(val tab: String, val subtitle: String) {
     Charts("Charts", "Canvas Line & Donut"),
     CardStack("Card Stack", "Swipeable Card Stack"),
     MorphingFab("Morphing FAB", "Container-Transform Action Menu"),
+    Shimmer("Shimmer", "Skeleton Loaders"),
 }
 
 /**
@@ -100,6 +101,7 @@ fun CatalogApp(
                     CatalogEntry.Charts -> ChartsDemo()
                     CatalogEntry.CardStack -> CardStackDemo()
                     CatalogEntry.MorphingFab -> MorphingFabDemo()
+                    CatalogEntry.Shimmer -> ShimmerDemo()
                 }
             }
         }
